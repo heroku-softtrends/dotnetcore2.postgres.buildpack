@@ -75,7 +75,7 @@ echo "publish ${PROJECT_FILE}"
 dotnet publish $PROJECT_FILE --output ${BUILD_DIR}/heroku_output --configuration Release --runtime linux-x64
 
 #echo "Remove project files in production machine"
-find -maxdepth 1 ! -name .profile.d ! -name .apt ! -name .heroku ! -name node_modules/html-pdf ! -name node_modules/phantomjs-prebuilt ! -name heroku_output  -exec rm -rv {} \;
+find -maxdepth 1 ! -name .profile.d ! -name .apt ! -name .heroku ! -name heroku_output ! -path "./node_modules/html-pdf/*" ! -path "./node_modules/phantomjs-prebuilt/*" -exec rm -rv {} \;
 
 #cd ${BUILD_DIR}/node_modules && find -maxdepth 1 ! -name html-pdf ! -name phantomjs-prebuilt -exec rm -rv {} \;
 
